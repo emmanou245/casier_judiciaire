@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+<h1 class="text-center">BIENVENU SUR LA PAGE DE GESTION DETAIL!</h1>
+<br>
+<div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>PERSONNE:</h5>
+                <hr>
+                <img src="{{personne.photo.url}}" class="progressive-image img-fluid w-100 progressive-image-4"   alt="....">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card card-body">
+                <h5> Informations Sur La Personne:</h5>
+                <hr>
+                <p>Nom: {{personne.nom}}</p>
+                <p>Prenom: {{personne.prenom}}</p>
+                <p>Date de naissance: {{personne.date_naissance}}</p>
+                <p>Lieu de naissance: {{personne.lieu_naissance}}</p>
+                <p>Lieu de residence: {{personne.lieu_de_residence}}</p>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card card-body">
+                <h5> Total des antecedents:</h5>
+                <hr>
+                <h1 style="text-align: center; paddign: 10px">{{antecedents.count}}</h1>
+            </div>
+            <a  class="btn btn-outline-info btn-sm btn-block-center" href="{% url 'rechercher_personne' %}">RETOUR EN ARRIERE</a>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <h5>Antecedents:</h5>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+
+                <a class="btn btn-primary" href="{% url 'ajout_antecedent' personne.id%}">Ajouter Un Antecedent</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th> Categories</th>
+                        <th> Description</th>
+                        <th> Date des faits</th>
+                        <th> Modifier antecedent</th>
+                        <th> Supprimer antecedent</th>
+                    </tr>
+                    {% for antecedent in antecedents%}
+                    <tr>
+                        <th> {{antecedent.categories}}</th>
+                        <th> {{antecedent.description}}</th>
+                        <th> {{antecedent.date_des_faits}}</th>
+                        <th><a class="btn btn-sm btn-info" href="{% url 'modifier_antecedent' antecedent.id %}">Modifier</a></th>
+                        <th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_antecedent' antecedent.id %}">Supprimer</a></th>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+        </div>
+    </table>
+</div>
+</div>
+
+{% endblock %}

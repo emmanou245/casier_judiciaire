@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+        <h1 class="text-center">LISTES DE TOUS LES PERSONNES AYANG COMMUS DES INFRACTIONS!</h1>
+        <hr>
+        <br>
+
+        <br>
+        <div class="card card-body">
+           <div id="maisons" class="col-lg-9 mx-auto">
+               <div class="row mx-auto">
+                   {% for personne in personnes %}
+                   <div class="card mx-auto mb-3" style="width: 18rem;">
+                       <img src="{{personne.photo.url}}" class="img-responsive" alt="....">
+                       <div class="card-body">
+                           <p><b>{{personne.nom}}</b></p>
+                           <p><a href="{%url 'detail_personne' personne.id%}" class="btn btn-sm btn-primary">Savoir plus</a></p>
+                       </div>
+                   </div>
+                   {% endfor %}
+
+               </div>
+
+               <div class="form-group">
+                <button  class="btn bn-secondary mb-4">
+                <a href="liste_antecedent" class="alert border rounded btn-success">Voir Liste Antecedent</a>
+                </button>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

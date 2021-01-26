@@ -1,0 +1,40 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+<br>
+<div class="row">
+        <h5>All Controls:</h5>
+        <hr>
+        <div class="card card-body">
+            <h1 class="btn btn-primary">VOICI LES ANTECEDENTS DES PERSONNES</h1>
+            <table class="table table-sm">
+                <tr>
+                    <th> Personne</th>
+                    <th> CategoriesCrime</th>
+                    <th> Description</th>
+                    <th> Date des faits</th>
+                    <th> Modifier</th>
+                    <th> Annuler</th>
+                </tr>
+                {% for antecedent in antecedents %}
+                <tr>
+                    <th> {{antecedent.personne}} </th>
+                    <th> {{antecedent.categories}} </th>
+                    <th> {{antecedent.description}} </th>
+                    <th> {{antecedent.date_des_faits}} </th>
+                    <th><a class="btn btn-sm btn-info" href="{% url 'modifier_antecedent' antecedent.id %}">Modifier</a></th>
+                    <th><a class="btn btn-sm btn-danger" href="{% url 'supprimer_antecedent' antecedent.id %}">Annuler</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="form-group">
+                <a class="btn btn-sm btn-warning" href="{% url 'rechercher_personne'%}" role="button">Aller Rechercher Personne</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

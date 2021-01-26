@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{%load crispy_forms_tags%}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">CETTE FORMULAIRE PERMET D'AJOUTER UNE PERSONNE!</h1>
+    <div class="p-4 m-4">
+        <div class="col-lg-5 mx-auto border rounded pt-4">
+            <div class="card card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    {%form|cryspy%}                    
+                    <!-- Nom -->
+                    <div class="form-group">
+                        <label for="Nom">Nom</label>
+                        <input type="text" name="nom" id="Nom"
+                               class="form-control form-control-sm" placeholder="Nom de la personne">
+                    </div>
+                    <br>
+                    <!-- prenom -->
+
+                    <div class="form-group">
+                        <label for="Prenom">Prenom</label>
+                        <input type="text" name="prenom" id="Prenom"
+                               class="form-control form-control-sm" placeholder="Prenom de la personne">
+                    </div>
+                    <br>
+                    <!-- date de naissance -->
+
+                    <div class="form-group">
+                        <label for="date_de_naissance">Date de naissance</label>
+                        <input type="date" name="date_naissance" id="date_de_naissance"
+                               class="form-control form-control-sm" placeholder="Date de naissance de la personne">
+                    </div>
+                    <br>
+                    <!-- Lieu de naissance -->
+                    <div class="form-group">
+                        <label for="lieu_de_naissance">Lieu de naissance</label>
+                        <input type="text" name="lieu_naissance" id="lieu_de_naissance"
+                               class="form-control form-control-sm" placeholder="Lieu de naissance de la personne">
+                    </div>
+
+                    <br>
+                    <!-- ville_residence -->
+                    <div class="form-group">
+                        <label for="lieu_de_residence">Lieu de residence</label>
+                        <input type="text" name="lieu_de_residence" id="lieu_de_residence"
+                               class="form-control form-control-sm" placeholder="Lieu de residence de la personne">
+
+                    </div>
+                    <br>
+                    <!-- photo de la personne -->
+                    <div class="form-group">
+                        <label for="Photo">Photo de la personne</label>
+                        <input type="file" name="photo" id="Photo"
+                               class="form-control form-control-sm" placeholder="Photo de la personne">
+
+                    </div>
+
+
+
+                    <!-- Envoyer -->
+                    <br>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Envoyer">
+                        <a class="alert border rounded btn-warning" href="antecedent" >Retour en arriere</a>
+                    </div>
+            </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
